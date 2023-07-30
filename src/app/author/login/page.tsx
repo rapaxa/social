@@ -7,15 +7,13 @@ import * as yup from 'yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/firebase/firebase';
 import { useRouter } from 'next/navigation'
-
-import {Main} from "next/document";
 import Home from '@/app/page'
 
 interface IFormInput {
     email: string;
     password: string;
-    data:string
 }
+
 const schema = yup.object().shape({
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
