@@ -4,6 +4,7 @@ import React from "react";
 import styleHeader from "@/components/Header/Header.module.css";
 import styleApp from "@/app/page.module.css";
 import Link from "next/link";
+import Image from "next/image";// Импортируем StaticImage из next/image
 
 const logo: string = `${logoI}`;
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
         <header className={styleHeader.header}>
             <div className={styleApp.container}>
                 <div className={styles.header_logo}>
-                    <img className={styles.logo} src = {logo}></img>
+                    <Image width={30}  src={logoI} alt="Logo"  />
                 </div>
 
                 <nav className={styles.nav}>
