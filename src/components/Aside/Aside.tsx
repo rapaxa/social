@@ -1,15 +1,33 @@
 import style from './Aside.module.css'
-const Aside =()=>{
-    return(
+import Link from "next/link";
 
-            <ul className={style.menu}>
-                <li className={style.item}>Моя страница</li>
-                <li className={style.item}>Моф друзья</li>
-                <li className={style.item}>Мои сообщения</li>
-                <li className={style.item}>Мои Фотографии</li>
-                <li className={style.item}>Мои Группы</li>
-                <li className={style.item}>Мои Настройки</li>
-            </ul>
+const Aside = () => {
+    return (
+
+        <div className={style.menu}>
+            <Link className={style.item} href="/">
+                Моя страница
+            </Link>
+            <Link className={style.item} href={'/friends'}>
+               Мои друзья
+            </Link>
+            <Link className={style.item}  href={'/message'}>
+                Мои сообщения
+
+            </Link>
+            <Link  className={style.item} href={'/photo'}>
+                Мои Фотографии
+
+            </Link>
+            <Link className={style.item}  href={'/groups'}>
+               Мои Группы
+
+            </Link>
+            <Link className={style.item}  href={'/settings'}>
+               Мои Настройки
+            </Link>
+
+        </div>
 
     )
 }

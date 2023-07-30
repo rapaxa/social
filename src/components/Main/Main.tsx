@@ -1,8 +1,11 @@
 import styles from '../Main/Main.module.css'
-
-const Main = () => {
+interface MainProps {
+    userEmail: string;
+    // Другие свойства, связанные с пользователем
+}
+const Main = ({userEmail}:MainProps) => {
     return (
-        <div className={styles.content}>
+      <>
             <div className={styles.main_info}>
                 <div className={styles.main_info}>
                     <div className={styles.main_photo}>
@@ -10,17 +13,17 @@ const Main = () => {
                     </div>
                     <button className={styles.btn}>Edit</button>
                 </div>
-                
 
             </div>
             <div className={styles.wall}>
                 <div className={styles.wall_top}>
-                    <h1>Pavlo Volodchenko </h1>
+                    <h1>{userEmail} </h1>
+                    <p>{userEmail}</p>
                     <span>online</span>
                 </div>
-
             </div>
-        </div>
+      </>
+
     )
 }
 export default Main
