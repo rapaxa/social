@@ -5,19 +5,19 @@ import * as yup from 'yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth,firestore } from '@/firebase/firebase'; // Импортируем auth из вашего файла конфигурации Firebase
 import { doc, setDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
 
 
-interface IFormInput {
+interface IFormIn {
     firstName: string;
     lastName: string;
     phoneNumber: string;
     email: string;
     password: string;
-    confirmPassword: string;
+    confirmPassword: string | undefined; // Обновленный тип для confirmPassword
     country: string;
     nationality: string;
 }
+
 
 const schema = yup.object().shape({
     firstName: yup.string().required(),
@@ -31,11 +31,15 @@ const schema = yup.object().shape({
 });
 
 export default function Register() {
-    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
         resolver: yupResolver(schema),
     });
 
-    const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    const onSubmit: SubmitHandler<IFormIn> = (data) => {
         createUserWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
                 const user = userCredential.user;
