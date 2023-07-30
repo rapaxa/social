@@ -5,7 +5,7 @@ const Aside = () => {
     return (
 
         <div className={style.menu}>
-            <Link className={style.item} href="/">
+            <Link className={style.item} href="/yourPage">
                 Моя страница
             </Link>
             <Link className={style.item} href={'/friends'}>

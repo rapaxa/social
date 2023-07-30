@@ -1,6 +1,10 @@
 import styles from '../Main/Main.module.css'
+interface userProps{
+    lastName:string,
+    firstName:string
+}
+const Main = ({lastName,firstName}:userProps)=> {
 
-const Main = () => {
     return (
       <>
             <div className={styles.main_info}>
@@ -14,8 +18,8 @@ const Main = () => {
             </div>
             <div className={styles.wall}>
                 <div className={styles.wall_top}>
-                    <h1>userEmail</h1>
-                    <p>userEmail</p>
+                    <h1>{lastName}</h1>
+                    <p>{firstName}</p>
                     <span>online</span>
                 </div>
             </div>

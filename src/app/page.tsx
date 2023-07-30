@@ -1,11 +1,9 @@
 'use client'
 import Main from '../components/Main/Main'
-
-
+import Author from "@/app/author/page";
 const Home = () => {
     return (
-        <Main/>
-
+<Author/>
     )
 }
 export default Home

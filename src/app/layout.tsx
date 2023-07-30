@@ -24,14 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <Header/>
-      <div className={styleApp.container}>
-        <aside className={styleAside.aside}>
-          <Aside/>
-        </aside>
         <main className={styleMain.main}>
           {children}
         </main>
-      </div>
       </body>
     </html>
   )
