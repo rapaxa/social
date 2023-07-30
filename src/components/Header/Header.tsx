@@ -1,16 +1,17 @@
-import logo from './logo192.png'
+import logoI from './logo192.png'
 import styles from './Header.module.css'
 import React from "react";
 import styleHeader from "@/components/Header/Header.module.css";
 import styleApp from "@/app/page.module.css";
 import Link from "next/link";
 
+const logo: string = `${logoI}`;
 const Header = () => {
     return (
         <header className={styleHeader.header}>
             <div className={styleApp.container}>
                 <div className={styles.header_logo}>
-                    <img className={styles.logo} src={logo}></img>
+                    <img className={styles.logo} src = {logo}></img>
                 </div>
 
                 <nav className={styles.nav}>
