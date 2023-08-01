@@ -16,7 +16,6 @@ const initialState: IUsers = {
     lastName: '',
     phone: '',
     national: '',
-
     uid: '',
     logIn: false
 }
@@ -26,18 +25,23 @@ export const userSlice = createSlice({
     reducers: {
         add: (state, action) => {
             state.uid = action.payload
-            state.logIn = true
+
         },
         dataUser: (state, action) => {
-            console.log(action.payload)
+
             state.firstName = action.payload.firstName
             state.lastName = action.payload.lastName
             state.national = action.payload.nationality
             state.phone = action.payload.phoneNumber
-        }
+        },
+        setLogIn:(state, action)=>{
+
+            state.logIn = action.payload
+        },
+
     }
 })
-export const {add,dataUser} = userSlice.actions
+export const {add,dataUser,setLogIn} = userSlice.actions
 export const selectCount = (state: RootState) => state.user
 export default userSlice.reducer
 

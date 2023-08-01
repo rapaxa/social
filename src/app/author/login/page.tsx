@@ -7,7 +7,7 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '@/firebase/firebase';
 import {useRouter} from 'next/navigation'
 import {useAppDispatch} from "@/redux/hooks/hooks";
-import {add} from "@/redux/slice/users";
+import {add, setLogIn} from "@/redux/slice/users";
 import Modal from "@/components/Modal/Modal";
 import styleForm from '../stylePageAuthor/form.module.css'
 
@@ -35,6 +35,8 @@ export default function Login() {
 
     const handleUserLogin = (uid: string) => {
         dispatch(add(uid));
+        dispatch(setLogIn(true))
+
         router.push(`/${uid}`);
     };
 
