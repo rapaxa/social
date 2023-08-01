@@ -12,7 +12,7 @@ export interface IUsers {
 }
 
 const initialState: IUsers = {
-    firstName: 'ç',
+    firstName: '',
     lastName: '',
     phone: '',
     national: '',

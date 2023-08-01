@@ -9,10 +9,16 @@ import {useAppSelector} from "@/redux/hooks/hooks";
 import {dataUser, selectCount} from "@/redux/slice/users";
 import {collection, getDocs, query} from "firebase/firestore";
 import {db} from "@/firebase/firebase";
+import { useRouter } from 'next/navigation'
 
 const YourPage: React.FC = () => {
     const dispatch = useDispatch();
     const user = useAppSelector((selectCount))
+    const router = useRouter()
+    const handleCheckAuth = () =>{
+        router.push('/author/login')
+
+    }
     useEffect(() => {
         const fetchData = async () => {
             const q = query(collection(db, "users"))
@@ -25,18 +31,28 @@ const YourPage: React.FC = () => {
             });
         }
         fetchData();
-    }, []);
+
+        // Если пользователь не вошел в систему, перенаправляем его на страницу входа
+        if (!user.logIn) {
+            router.push('/author/login');
+        }
+    }, [user.logIn]);
     return (
+        <>
+            {user.logIn && (
+                <div className={styleApp.container}>
+                    <aside className={styleAside.aside}>
+                        <Aside/>
+                    </aside>
+                    <main>
+                        <Main/>
+                    </main>
+                </div>
+            )
+            }
+        </>
 
-        <div className={styleApp.container}>
 
-            <aside className={styleAside.aside}>
-                <Aside/>
-            </aside>
-            <main>
-                <Main/>
-            </main>
-        </div>
     )
 }
 

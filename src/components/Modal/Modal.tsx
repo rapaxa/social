@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-
+import style from "@/app/author/login/login.module.css"
 interface ModalProps {
     onClose: () => void;
 }
@@ -17,11 +17,11 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
     }
 
     return (
-        <>
+        <div className={style.form_window}>
             <div>Ошибка ввода логина или пароля</div>
             <button onClick={handleClose}>Попробывать ещё раз</button>
             <button onClick={handleRegistr}>Регистрация</button>
-        </>
+        </div>
     );
 };
 

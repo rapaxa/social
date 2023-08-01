@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth,firestore } from '@/firebase/firebase'; // Импортируем auth из вашего файла конфигурации Firebase
 import { doc, setDoc } from 'firebase/firestore';
-
+import style from "../login/login.module.css"
 
 interface IFormIn {
     firstName: string;
@@ -72,7 +72,7 @@ export default function Register() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={style.form_window} onSubmit={handleSubmit(onSubmit)}>
             <input {...register("firstName")} placeholder="First Name" />
             {errors.firstName && <p>{errors.firstName.message}</p>}
 
