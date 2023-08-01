@@ -1,14 +1,15 @@
 'use client'
-import React, {useState} from 'react';
-import {useForm, SubmitHandler} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
+import React, { useEffect, useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {signInWithEmailAndPassword} from 'firebase/auth';
-import {auth} from '@/firebase/firebase';
-import {useRouter} from 'next/navigation'
-import Home from '@/app/page'
-import {useAppDispatch, useAppSelector} from "@/redux/hooks/hooks";
-import {add, selectCount} from "@/redux/slice/users";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/firebase/firebase';
+import { useRouter } from 'next/navigation'
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { add } from "@/redux/slice/users";
+import Modal from "@/components/Modal/Modal";
+import './login.module.css'
 
 interface IFormInput {
     email: string;
@@ -21,40 +22,54 @@ const schema = yup.object().shape({
 });
 
 export default function Login() {
-    const {register, handleSubmit, formState: {errors}} = useForm<IFormInput>({
+    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
         resolver: yupResolver(schema),
     });
     const router = useRouter()
-    const [status, setStatus] = useState(false)
+    const [showModal, setShowModal] = useState(false);
     const dispatch = useAppDispatch()
+
+    const closeAndResetModal = () => {
+        setShowModal(false);
+    };
+
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
-                dispatch((add(userCredential.user.uid)))
+                dispatch(add(userCredential.user.uid));
                 router.push(`/${userCredential.user.uid}`);
             })
             .catch((error) => {
-                // Ошибка при входе в систему...
-                console.error("Error signing in: ", error);
+                console.error('Error:', error);
+                setShowModal(true);
             });
     };
 
+    useEffect(() => {
+        if (showModal) {
+            const timeout = setTimeout(() => {
+                closeAndResetModal();
+            }, 10000);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [showModal]);
+
     return (
         <div>
-            {status ? (
-                // Здесь должно быть содержимое, которое вы хотите отобразить после входа пользователя в систему
-                <h1>Loading</h1>
+            {showModal ? (
+                <Modal onClose={closeAndResetModal} />
             ) : (
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("email")} placeholder="Email"/>
+                    <input {...register("email")} placeholder="Email" />
                     {errors.email && <p>{errors.email.message}</p>}
 
-                    <input {...register("password")} placeholder="Password" type="password"/>
+                    <input {...register("password")} placeholder="Password" type="password" />
                     {errors.password && <p>{errors.password.message}</p>}
-
                     <button type="submit">Login</button>
                 </form>
             )}
         </div>
     );
 }
+
