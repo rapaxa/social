@@ -1,19 +1,13 @@
-import style from './layout.module.css'
-export default function Author({
+import style from './stylePageAuthor/layout.module.css'
+export default function AuthorChildren({
                                        children,
                                    }: {
     children: React.ReactNode
 }){
     return(
-        <>
-            <div className={style.container}>
-                <div className={style.window}>
+        <main className={style.window}>
                     {children}
-                </div>
-
-            </div>
-
-        </>
+        </main>
 
     )
 }

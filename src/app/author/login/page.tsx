@@ -9,7 +9,7 @@ import {useRouter} from 'next/navigation'
 import {useAppDispatch} from "@/redux/hooks/hooks";
 import {add} from "@/redux/slice/users";
 import Modal from "@/components/Modal/Modal";
-import style from './login.module.css'
+import styleForm from '../stylePageAuthor/form.module.css'
 
 interface IFormInput {
     email: string;
@@ -20,29 +20,36 @@ const schema = yup.object().shape({
     email: yup.string().required().email(),
     password: yup.string().required().min(6),
 });
-
-
 export default function Login() {
     const {register, handleSubmit, formState: {errors}} = useForm<IFormInput>({
         resolver: yupResolver(schema),
     });
     const router = useRouter()
     const [showModal, setShowModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useAppDispatch()
     const closeAndResetModal = () => {
         setShowModal(false);
+        setErrorMessage('');
+    };
+
+    const handleUserLogin = (uid: string) => {
+        dispatch(add(uid));
+        router.push(`/${uid}`);
+    };
+
+    const handleLoginError = (error: any) => {
+        console.error('Error:', error);
+        setErrorMessage(error.message);
+        setShowModal(true);
     };
 
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
-                dispatch(add(userCredential.user.uid));
-                router.push(`/${userCredential.user.uid}`);
+                handleUserLogin(userCredential.user.uid);
             })
-            .catch((error) => {
-                console.error('Error:', error);
-                setShowModal(true);
-            });
+            .catch(handleLoginError);
     };
 
     useEffect(() => {
@@ -58,9 +65,11 @@ export default function Login() {
     return (
         <>
             {showModal ? (
-                <Modal onClose={closeAndResetModal}/>
+                <Modal onClose={closeAndResetModal} errorMessage={errorMessage}>
+                    <p>Error: {errorMessage}</p>
+                </Modal>
             ) : (
-                <form className={style.form_window} onSubmit={handleSubmit(onSubmit)}>
+                <form className={styleForm.form_window} onSubmit={handleSubmit(onSubmit)}>
                     <input {...register("email")} placeholder="Email"/>
                     {errors.email && <p>{errors.email.message}</p>}
 
@@ -72,4 +81,3 @@ export default function Login() {
         </>
     );
 }
-

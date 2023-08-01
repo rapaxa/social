@@ -1,7 +1,10 @@
 import { useRouter } from 'next/navigation';
-import style from "@/app/author/login/login.module.css"
+import style from "@/app/author/stylePageAuthor/form.module.css"
 interface ModalProps {
     onClose: () => void;
+    errorMessage: string;
+    children?: React.ReactNode; // Добавьте это, если хотите передать children
+
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose }) => {
@@ -18,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
 
     return (
         <div className={style.form_window}>
-            <div>Ошибка ввода логина или пароля</div>
+            <p>Ошибка ввода логина или пароля</p>
             <button onClick={handleClose}>Попробывать ещё раз</button>
             <button onClick={handleRegistr}>Регистрация</button>
         </div>

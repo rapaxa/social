@@ -1,20 +1,20 @@
 
 import Link from "next/link";
-import style from './layout.module.css'
+import style from './stylePageAuthor/layout.module.css'
 
 const Author = () => {
     return (
-        <div className={style.window_elements}>
+        <main className={style.window}>
             <h1>Добро пожаловать</h1>
             <div className={style.wrap_btn}>
-                <Link href={"/author/login"}>
+                <Link className={style.link} href={"/author/login"}>
                     <button >Войти</button>
                 </Link>
-                <Link href={"/author/registration"}>
+                <Link className={style.link} href={"/author/registration"}>
                     <button>Регистрация</button>
                 </Link>
             </div>
-        </div>
+        </main>
 
     )
 }
