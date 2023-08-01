@@ -7,6 +7,8 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '@/firebase/firebase';
 import {useRouter} from 'next/navigation'
 import Home from '@/app/page'
+import {useAppDispatch, useAppSelector} from "@/redux/hooks/hooks";
+import {add, selectCount} from "@/redux/slice/users";
 
 interface IFormInput {
     email: string;
@@ -24,13 +26,12 @@ export default function Login() {
     });
     const router = useRouter()
     const [status, setStatus] = useState(false)
+    const dispatch = useAppDispatch()
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
-                console.log(userCredential)
+                dispatch((add(userCredential.user.uid)))
                 router.push(`/${userCredential.user.uid}`);
-
-
             })
             .catch((error) => {
                 // Ошибка при входе в систему...

@@ -1,10 +1,9 @@
 import styles from '../Main/Main.module.css'
-interface userProps{
-    lastName:string,
-    firstName:string
-}
-const Main = ({lastName,firstName}:userProps)=> {
+import {useAppDispatch, useAppSelector} from "@/redux/hooks/hooks";
+import {selectCount} from "@/redux/slice/users";
 
+const Main = ()=> {
+    const user = useAppSelector((selectCount))
     return (
       <>
             <div className={styles.main_info}>
@@ -18,9 +17,9 @@ const Main = ({lastName,firstName}:userProps)=> {
             </div>
             <div className={styles.wall}>
                 <div className={styles.wall_top}>
-                    <h1>{lastName}</h1>
-                    <p>{firstName}</p>
-                    <span>online</span>
+                    <h1>{user.firstName}</h1>
+                    <p>{user.lastName}</p>
+                    <span>{user.phone}</span>
                 </div>
             </div>
       </>
