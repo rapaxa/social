@@ -1,0 +1,44 @@
+.container{
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+}
+.window{
+    display: flex;
+    width: 40%;
+    min-height: 20%;
+    align-items: center;
+    justify-content: center;
+    margin: 6%;
+    border: white;
+    border-radius: 2%;
+}
+.window_elements{
+    display: flex;
+    justify-content: space-around;
+    height: 40%;
+    font-size: 20px;
+    flex-direction: column;
+}
+.wrap_btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.wrap_btn button {
+    padding: 10px 20px;
+    background-color: #0070f3;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.wrap_btn button:hover {
+    background-color: #0051a2;
+}
+
