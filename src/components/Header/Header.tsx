@@ -8,7 +8,11 @@ import Link from "next/link";
 import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCount, setLogIn} from "@/redux/slice/users";
-import {useRouter} from 'next/navigation'// Импортируем StaticImage из next/image
+import {useRouter} from 'next/navigation'
+import {persistStore} from "redux-persist";
+import {persistor} from "@/redux/store";
+
+// Импортируем StaticImage из next/image
 
 const logo: string = `${logoI}`;
 const Header = () => {
@@ -20,15 +24,19 @@ const Header = () => {
     const handlerSignIn = () => {
         dispatch(setLogIn(true))
         setSign(true)
+        persistor.purge()
     }
     const handlerSignOut = () => {
         setSign(false)
         router.push('/')
         dispatch(setLogIn(false))
+
+
     }
     useEffect(() => {
         if(selector.logIn === true){
             setSignText('Выйти')
+
         }else {
             setSignText('Войти')
         }
