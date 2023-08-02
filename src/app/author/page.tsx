@@ -4,7 +4,7 @@ import style from './stylePageAuthor/layout.module.css'
 
 const Author = () => {
     return (
-        <section className={style.window}>
+        <section className={style.window_elements}>
             <h1>Добро пожаловать</h1>
             <div className={style.wrap_btn}>
                 <Link className={style.link} href={"/author/login"}>
