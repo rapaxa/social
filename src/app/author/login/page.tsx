@@ -72,11 +72,12 @@ export default function Login() {
                 </Modal>
             ) : (
                 <form className={styleForm.form_window} onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("email")} placeholder="Email"/>
                     {errors.email && <p>{errors.email.message}</p>}
+                    <input {...register("email")} placeholder="Email"/>
 
-                    <input {...register("password")} placeholder="Password" type="password"/>
                     {errors.password && <p>{errors.password.message}</p>}
+                    <input {...register("password")} placeholder="Password" type="password"/>
+
                     <button type="submit">Login</button>
                 </form>
             )}

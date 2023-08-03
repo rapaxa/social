@@ -5,16 +5,22 @@
     justify-content: space-around;
     background-color: #6887e3;
     min-height: 30px;
+    max-height: 40px;
     min-width: 392px;
 
 }
 .header_logo{
-    width: 4%;
+    width: 2%;
+    height: 100%;
     margin-right: 20%;
+    display: flex;
+    align-items: center;
 }
 .logo{
-    width: 100%;
-    min-width:50px;
+    min-width:40px;
+    max-width: 50px;
+    min-height: 30px;
+    max-height: 40px;
 }
 .nav{
     display: flex;

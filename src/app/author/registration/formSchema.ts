@@ -1,12 +1,13 @@
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
 export const schema = yup.object().shape({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    phoneNumber: yup.string().required().matches(/^[0-9]+$/, "Must be only digits").min(10, 'Must be exactly 10 digits').max(10, 'Must be exactly 10 digits'),
-    email: yup.string().required().email(),
-    password: yup.string().required().min(6),
-    confirmPassword: yup.string().oneOf([yup.ref('password'), undefined], 'Passwords must match'),
-    country: yup.string().required(),
-    nationality: yup.string().required(),
+    firstName: yup.string().required('Введите имя'),
+    lastName: yup.string().required('Введите фамилию'),
+    phoneNumber: yup.string().required('Введите номер').matches(/^\+?[0-9]{10,13}$/, "Номер должен состоять из цифр").min(10, 'Номер короткий').max(13, 'Номер слишком длинный'),
+    email: yup.string().required('Введите email').email(),
+    password: yup.string().required('Введите пароль').min(6, 'Пароль должен иметь не меньше 6 символов'),
+    confirmPassword: yup.string().oneOf([yup.ref('password'), undefined], 'Пароль не совпадает'),
+    country: yup.string().required('Выберите страну'),
+    nationality: yup.string().required('Выберите национальность'),
 });

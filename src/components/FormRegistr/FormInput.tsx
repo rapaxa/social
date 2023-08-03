@@ -9,8 +9,9 @@ interface FormInputProps {
 }
 const FormInput: React.FC<FormInputProps> = ({register, name, placeholder, type = 'text', errors}) => (
     <>
-        <input {...register} name={name} placeholder={placeholder} type={type}/>
         {errors[name] && <p>{errors[name].message}</p>}
+        <input {...register} name={name} placeholder={placeholder} type={type}/>
+
     </>
 );
  export default FormInput

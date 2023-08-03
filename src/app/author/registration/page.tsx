@@ -53,22 +53,22 @@ export default function Register() {
                        errors={errors}/>
             <FormInput register={register("confirmPassword")} name="confirmPassword" placeholder="Confirm Password"
                        type="password" errors={errors}/>
-
+            {errors.country && <p>{errors.country.message}</p>}
             <select {...register("country")} >
                 <option value="">Select country</option>
                 {countryOptions.map((option, index) => (
                     <option key={index} value={option.value}>{option.label}</option>
                 ))}
             </select>
-            {errors.country && <p>{errors.country.message}</p>}
 
+            {errors.nationality && <p>{errors.nationality.message}</p>}
             <select {...register("nationality")} >
                 <option value="">Select nationality</option>
                 {nationalityOptions.map((option, index) => (
                     <option key={index} value={option.value}>{option.label}</option>
                 ))}
             </select>
-            {errors.nationality && <p>{errors.nationality.message}</p>}
+
 
             <button type="submit">Register</button>
         </form>

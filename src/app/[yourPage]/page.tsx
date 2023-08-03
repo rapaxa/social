@@ -2,6 +2,7 @@
 import styleAside from "@/components/Aside/Aside.module.css";
 import Aside from "@/components/Aside/Aside";
 import styleApp from "@/app/page.module.css";
+import styleMain from "@/components/Main/Main.module.css"
 import Main from '@/components/Main/Main'
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
@@ -15,10 +16,7 @@ const YourPage: React.FC = () => {
     const dispatch = useDispatch();
     const user = useAppSelector((selectCount))
     const router = useRouter()
-    const handleCheckAuth = () =>{
-        router.push('/author/login')
 
-    }
     useEffect(() => {
         const fetchData = async () => {
             const q = query(collection(db, "users"))
@@ -40,14 +38,7 @@ const YourPage: React.FC = () => {
     return (
         <>
             {user.logIn && (
-                <div className={styleApp.container}>
-                    <aside className={styleAside.aside}>
-                        <Aside/>
-                    </aside>
-                    <main>
                         <Main/>
-                    </main>
-                </div>
             )
             }
         </>

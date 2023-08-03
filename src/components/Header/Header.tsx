@@ -45,7 +45,7 @@ const Header = () => {
         <header className={styleHeader.header}>
             <div className={styleApp.container}>
                 <div className={styles.header_logo}>
-                    <Image width={30} src={logoI} alt="Logo"/>
+                    <Image className={styles.logo} width={30} src={logoI} alt="Logo"/>
                 </div>
 
                 <nav className={styles.nav}>
