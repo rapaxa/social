@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import style from './stylePageAuthor/layout.module.css'
+import style from './layout.module.css'
 
 const Author = () => {
     return (

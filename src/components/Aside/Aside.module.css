@@ -1,18 +1,4 @@
-.aside{
-    width:15%;
-    margin-right: 20px;
-    min-height: 400px;
-    max-height: 400px;
-    padding-left: 18px;
-    padding-right: 18px;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffff;
-    align-content: center;
-    align-items: center;
-    border-radius: 10px;
 
-}
 .menu{
     width: 100%;
     display: flex;

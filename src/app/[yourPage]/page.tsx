@@ -10,7 +10,7 @@ import {useAppSelector} from "@/redux/hooks/hooks";
 import {dataUser, selectCount} from "@/redux/slice/users";
 import {collection, getDocs, query} from "firebase/firestore";
 import {db} from "@/firebase/firebase";
-import { useRouter } from 'next/navigation'
+import {useRouter} from 'next/navigation'
 
 const YourPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const YourPage: React.FC = () => {
     return (
         <>
             {user.logIn && (
-                        <Main/>
+                <Main/>
             )
             }
         </>

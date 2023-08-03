@@ -2,9 +2,13 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 50%;
+    width: 70vh;
+    height: 70vh;
     margin: 5% auto;
-  
+    background-color: #fff;
+    border-radius: 20px;
+    align-content: center;
+    text-align: center
 }
 
 .window_elements {
@@ -23,12 +27,14 @@
     align-items: center;
     margin: 20px 0;
 }
-.link{
+
+.link {
     width: 80%;
     border: 1px solid white;
     border-radius: 5%;
 
 }
+
 .wrap_btn button {
     padding: 10px 20px;
     background-color: #0070f3;

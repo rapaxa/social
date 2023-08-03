@@ -1,4 +1,4 @@
-import style from './stylePageAuthor/layout.module.css'
+import style from './layout.module.css'
 export default function AuthorChildren({
                                        children,
                                    }: {

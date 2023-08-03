@@ -1,5 +1,5 @@
 import Author from "@/app/author/page";
-import style from '../app/author/stylePageAuthor/layout.module.css'
+import style from './author/layout.module.css'
 const Home = () => {
     return (
         <main className={style.window}>
