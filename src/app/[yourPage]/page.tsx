@@ -1,8 +1,5 @@
 'use client'
-import styleAside from "@/components/Aside/Aside.module.css";
-import Aside from "@/components/Aside/Aside";
-import styleApp from "@/app/page.module.css";
-import styleMain from "@/components/Main/Main.module.css"
+
 import Main from '@/components/Main/Main'
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";

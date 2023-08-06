@@ -1,10 +1,14 @@
 import './globals.css'
 import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
 import Header from "@/components/Header/Header";
 import {ReduxProvider} from "@/redux/provider/provider";
+import { Roboto } from 'next/font/google'
 
-const inter = Inter({subsets: ['latin']})
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+    display: 'swap',
+})
 
 export const metadata: Metadata = {
     title: 'My social site',
@@ -19,17 +23,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className={inter.className}>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-        </style>
+        <body className={roboto.className}>
         <ReduxProvider>
             <Header/>
             <div className='wrap'>
             {children}
             </div>
         </ReduxProvider>
-
         </body>
         </html>
     )
