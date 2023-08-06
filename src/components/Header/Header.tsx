@@ -9,10 +9,9 @@ import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCount, setLogIn} from "@/redux/slice/users";
 import {useRouter} from 'next/navigation'
-import {persistStore} from "redux-persist";
 import {persist} from "@/redux/store";
 
-// Импортируем StaticImage из next/image
+
 
 const logo: string = `${logoI}`;
 const Header = () => {
@@ -34,9 +33,9 @@ const Header = () => {
 
     }
     useEffect(() => {
+        
         if(selector.logIn === true){
             setSignText('Выйти')
-
         }else {
             setSignText('Войти')
         }

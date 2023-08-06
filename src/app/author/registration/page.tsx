@@ -6,9 +6,7 @@ import {schema} from './formSchema'
 import {yupResolver} from "@hookform/resolvers/yup";
 import FormInput from "@/components/FormRegistr/FormInput";
 import {useState} from "react";
-import {Simulate} from "react-dom/test-utils";
-import submit = Simulate.submit;
-import {log} from "util";
+
 
 interface Option {
     value: string;

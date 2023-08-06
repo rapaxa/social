@@ -2,9 +2,10 @@ import styles from "@/components/Main/Main.module.css";
 import {storage} from "@/firebase/firebase"
 import {getDownloadURL, listAll, ref, uploadBytes} from "@firebase/storage";
 import {useEffect, useState} from "react";
-import {getFile, setFile} from "@/components/Main/BarBlock/MainPhoto/SetPhoto";
+import {uploadFile} from "@/firebase/upLoadFile";
 
 const BarBlock = () => {
+
     const [photo,setPhoto] = useState("")
     useEffect(()=>{
         const storageRef = ref(storage,'mainPhoto/main');
@@ -34,14 +35,29 @@ const BarBlock = () => {
                 }
 
     })})
+    const handleFileChange = async (e:any) => {
+        const file = e.target.files[0];
+        if (file) {
+            const storageRef = ref(storage, 'mainPhoto/main');
+            await  uploadBytes(storageRef, file)
+                .then((snapshot) => {
+                    console.log('Uploaded a blob or file!');
+                });
 
+            const url = await getDownloadURL(storageRef);
+            setPhoto(url);  // Обновляем URL изображения, чтобы отобразить новую загруженную фотографию
+        }
+    };
 
     return (
         <div className={styles.block_bar}>
             <div className={styles.block}>
                 <div className={styles.main_photo}>
                     <img className={styles.photo} src={photo} alt=""/>
-                    <input className={styles.btn} type="file"  />
+                    <label className={styles.btn}>
+                        Choose a file
+                        <input type="file" onChange={handleFileChange} />
+                    </label>
                 </div>
 
 

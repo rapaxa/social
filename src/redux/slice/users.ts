@@ -28,14 +28,12 @@ export const userSlice = createSlice({
 
         },
         dataUser: (state, action) => {
-
             state.firstName = action.payload.firstName
             state.lastName = action.payload.lastName
             state.national = action.payload.nationality
             state.phone = action.payload.phoneNumber
         },
         setLogIn:(state, action)=>{
-
             state.logIn = action.payload
         },
 

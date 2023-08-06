@@ -29,6 +29,12 @@
     padding: 20px;
 
 }
+.btn input[type="file"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
 .block_user_data{
     width: 75%;
 
@@ -44,7 +50,8 @@
 
 
 .main_photo {
-
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 485px; /* Ограничим максимальную ширину */
     display: flex;
