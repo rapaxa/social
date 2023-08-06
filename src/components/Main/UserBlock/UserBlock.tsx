@@ -13,10 +13,10 @@ const UserBlock =()=>{
                 </div>
                 <div className = {styles.position}>Изменить статус</div>
                 <div className={styles.block_user_born}>
-                    <p>День рождения: <p></p></p>
-                    <p>Страна: <p></p></p>
-                    <p>Город: <p></p></p>
-                    <p>Номер телефона: <p></p></p>
+                    <p>День рождения: </p>
+                    <p>Страна: </p>
+                    <p>Город:</p>
+                    <p>Номер телефона: </p>
                 </div>
 
             </div>

@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectCount, setLogIn} from "@/redux/slice/users";
 import {useRouter} from 'next/navigation'
 import {persistStore} from "redux-persist";
-import {persistor} from "@/redux/store";
+import {persist} from "@/redux/store";
 
 // Импортируем StaticImage из next/image
 
@@ -24,7 +24,7 @@ const Header = () => {
     const handlerSignIn = () => {
         dispatch(setLogIn(true))
         setSign(true)
-        persistor.purge()
+        persist.purge()
     }
     const handlerSignOut = () => {
         setSign(false)
