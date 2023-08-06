@@ -1,0 +1,23 @@
+.main{
+    display: flex;
+    width: 100%;
+}
+.container{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    min-width: 400px;
+    max-width: 1240px;
+}
+.aside{
+    width:15%;
+    min-height: 400px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+   color:rgb(159,179,200);
+    align-content: center;
+    align-items: center;
+}

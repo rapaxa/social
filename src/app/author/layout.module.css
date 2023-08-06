@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 70vh;
-    height: 70vh;
+    max-width: 140vh;
+    min-width: 50vh;
     margin: 5% auto;
     background-color: #fff;
     border-radius: 20px;

@@ -5,14 +5,21 @@ import styleForm from "../stylePageAuthor/form.module.css"
 import {schema} from './formSchema'
 import {yupResolver} from "@hookform/resolvers/yup";
 import FormInput from "@/components/FormRegistr/FormInput";
+import {useState} from "react";
+import {Simulate} from "react-dom/test-utils";
+import submit = Simulate.submit;
+import {log} from "util";
 
 interface Option {
     value: string;
     label: string;
 }
 
+
 export default function Register() {
     const onSubmit = useFormSubmit()
+    const [isSubmitted, setSubmitted] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -20,7 +27,10 @@ export default function Register() {
     } = useForm({
         resolver: yupResolver(schema),
     });
-
+    const submitForm: SubmitHandler<any> = (data) => {
+        onSubmit(data);
+        setSubmitted(true);
+    };
     const countryOptions: Option[] = [
         {value: 'Украина', label: 'Украина'},
         {value: 'Россия', label: 'Россия'},
@@ -43,7 +53,9 @@ export default function Register() {
 
 // Используем новый компонент и массивы в форме
     return (
-        <form className={styleForm.form_window} onSubmit={handleSubmit(onSubmit)}>
+        <>
+            {isSubmitted?(
+        <form className={styleForm.form_window} onSubmit={handleSubmit(submitForm)}>
             <FormInput register={register("firstName")} name="firstName" placeholder="First Name" errors={errors}/>
             <FormInput register={register("lastName")} name="lastName" placeholder="Last Name" errors={errors}/>
             <FormInput register={register("phoneNumber")} name="phoneNumber" placeholder="Phone Number"
@@ -69,10 +81,15 @@ export default function Register() {
                 ))}
             </select>
 
-
             <button type="submit">Register</button>
         </form>
+            ):(
+                <div>
+                    Hello
+                </div>
+            )
+            }
 
-
+        </>
     );
 }

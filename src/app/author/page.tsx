@@ -1,9 +1,13 @@
 
 import Link from "next/link";
 import style from './layout.module.css'
+import ProgressBar from "@/components/ProgressBar/ProgressBar";
 
 const Author = () => {
+
+
     return (
+
         <div className={style.window}>
             <h1>Добро пожаловать</h1>
             <div className={style.wrap_btn}>

@@ -83,7 +83,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: #bbb5b5;
+  background-color: rgb(240,242,245);
+  font-size: 0.9em;
 }
 
 body {
@@ -94,4 +95,26 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0; /* или где бы вы ни хотели разместить ее */
+  z-index: 1000;
+}
+p{
+  color: grey;
+}
+.progress {
+  height: 4px;
+  width: 0;
+  background-color: #8d21f3; /* цвет полоски */
+  transition: width 0.4s;
+}
+.wrap{
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;}
 

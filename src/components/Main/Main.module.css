@@ -1,53 +1,78 @@
+.header{
+    font-size: 24px;
+}
 .main{
     display: flex;
     width: 100%;
 }
 .container{
     display: flex;
-    justify-content: center;
-
+   width: 100%;
 }
 .name{
     display: flex;
     width: 100%;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
+}
+.position{
+    display: flex;
+    align-self: flex-start;
 }
 .block{
     background-color: #fff;
     width: 100%;
-    border-radius: 10px;
     margin-right: 20px;
     display: flex;
-    align-items: center;
+
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
+
 }
 .block_user_data{
-    width: 60%;
+    width: 75%;
+
 
 }
 .block_bar{
+    margin-left: 4%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20%;
+    width: 25%;
 }
 
 
+.main_photo {
 
-.main_photo{
-    margin: 20px;
-    width: 80%;
-    height: 50%;
+    width: 100%;
+    max-width: 485px; /* Ограничим максимальную ширину */
     display: flex;
+    justify-content: center; /* Центрируем изображение */
 }
-.photo{
+
+.photo {
     border-radius: 4%;
     width: 100%;
+    object-fit: cover; /* Это убедится, что изображение подстраивается под свой контейнер, сохраняя пропорции */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
 }
-.btn{
-    width: 80%;
-    height: 30px;
-    border-radius: 4%;
+.btn {
+    background-color: #1E90FF; /* темно-синий */
+    border: none;
+    color: white;
+width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+    background-color: #87CEFA; /* светло-голубой */
+    color: white;
 }

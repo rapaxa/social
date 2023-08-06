@@ -43,6 +43,7 @@ const Header = () => {
     }, [selector])
     return (
         <header className={styleHeader.header}>
+            <div className='wrap'>
             <div className={styleApp.container}>
                 <div className={styles.header_logo}>
                     <Image className={styles.logo} width={30} src={logoI} alt="Logo"/>
@@ -66,6 +67,7 @@ const Header = () => {
 
                     </div>
                 </nav>
+            </div>
             </div>
         </header>
     )
