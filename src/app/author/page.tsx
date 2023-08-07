@@ -1,8 +1,6 @@
 
 import Link from "next/link";
 import style from './layout.module.css'
-import ProgressBar from "@/components/ProgressBar/ProgressBar";
-
 const Author = () => {
 
 
