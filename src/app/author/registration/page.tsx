@@ -51,8 +51,6 @@ export default function Register() {
 
 // Используем новый компонент и массивы в форме
     return (
-        <>
-            {isSubmitted?(
         <form className={styleForm.form_window} onSubmit={handleSubmit(submitForm)}>
             <FormInput register={register("firstName")} name="firstName" placeholder="First Name" errors={errors}/>
             <FormInput register={register("lastName")} name="lastName" placeholder="Last Name" errors={errors}/>
@@ -81,13 +79,6 @@ export default function Register() {
 
             <button type="submit">Register</button>
         </form>
-            ):(
-                <div>
-                    Hello
-                </div>
-            )
-            }
 
-        </>
     );
 }

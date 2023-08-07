@@ -53,17 +53,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 485px; /* Ограничим максимальную ширину */
-    display: flex;
+
     justify-content: center; /* Центрируем изображение */
 }
 
-.photo {
-    border-radius: 4%;
-    width: 100%;
-    object-fit: cover; /* Это убедится, что изображение подстраивается под свой контейнер, сохраняя пропорции */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-}
+
 .btn {
     background-color: #1E90FF; /* темно-синий */
     border: none;

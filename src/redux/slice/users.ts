@@ -42,6 +42,7 @@ export const userSlice = createSlice({
 
 export const {add,dataUser,setLogIn} = userSlice.actions
 export const selectCount = (state: RootState) => state.user
+export const url = (state:RootState) => state.user.uid
 export default userSlice.reducer
 
 

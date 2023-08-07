@@ -3,12 +3,14 @@ import {storage} from "@/firebase/firebase"
 import {getDownloadURL, listAll, ref, uploadBytes} from "@firebase/storage";
 import {useEffect, useState} from "react";
 import {uploadFile} from "@/firebase/upLoadFile";
+import {useAppSelector} from "@/redux/hooks/hooks";
+import {url} from "@/redux/slice/users"
 
 const BarBlock = () => {
-
+    const urlUser = useAppSelector(url)
     const [photo,setPhoto] = useState("")
     useEffect(()=>{
-        const storageRef = ref(storage,'mainPhoto/main');
+        const storageRef = ref(storage,`${urlUser}/mainPhoto/main.jpg`);
         getDownloadURL(storageRef)
             .then((url)=>{
                 setPhoto(url)
@@ -38,7 +40,7 @@ const BarBlock = () => {
     const handleFileChange = async (e:any) => {
         const file = e.target.files[0];
         if (file) {
-            const storageRef = ref(storage, 'mainPhoto/main');
+            const storageRef = ref(storage, `${urlUser}/mainPhoto/main.jpg`);
             await  uploadBytes(storageRef, file)
                 .then((snapshot) => {
                     console.log('Uploaded a blob or file!');
@@ -53,7 +55,15 @@ const BarBlock = () => {
         <div className={styles.block_bar}>
             <div className={styles.block}>
                 <div className={styles.main_photo}>
-                    <img className={styles.photo} src={photo} alt=""/>
+                    <div
+                        style={{
+                            width: "100%", // Для растягивания блока на всю ширину контейнера
+                            height: "70vh", // Высоту блока можно установить по своему усмотрению
+                            backgroundImage: `url(${photo})`,
+                            backgroundPosition: "center", // Центрирование изображения
+                            backgroundSize: "cover" // Растягивание изображения по размеру блока
+                        }}
+                    />
                     <label className={styles.btn}>
                         Choose a file
                         <input type="file" onChange={handleFileChange} />
