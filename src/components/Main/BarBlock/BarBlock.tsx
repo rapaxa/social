@@ -2,7 +2,6 @@ import styles from "@/components/Main/Main.module.css";
 import {storage} from "@/firebase/firebase"
 import {getDownloadURL, listAll, ref, uploadBytes} from "@firebase/storage";
 import {useEffect, useState} from "react";
-import {uploadFile} from "@/firebase/upLoadFile";
 import {useAppSelector} from "@/redux/hooks/hooks";
 import {url} from "@/redux/slice/users"
 
